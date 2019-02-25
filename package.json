@@ -1,0 +1,24 @@
+{
+  "name": "com.niido.multishot",
+  "version": "0.0.1",
+  "description": "multishot camera plugin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AngelBarrera/multishotbyniido"
+  },
+  "keywords": [
+    "cordova",
+    "multishot"
+  ],
+  "platforms": [
+    "android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "vortech-it.com"
+}

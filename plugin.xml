@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.niido.multishot"
+        version="0.0.1">
+
+    <name>multishot plugin</name>
+    <description>plugin for multishot pictures</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova, multishot</keywords>
+    <repo>https://github.com/AngelBarrera/multishotByNiido</repo>
+    <issue></issue>
+
+    <engines>
+        <engine name="cordova-android" version=">=6.3.0" />
+    </engines>
+
+    <js-module src="www/multishot.js" name="Multishot">
+        <clobbers target="window.Multishot" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-feature android:name="android.hardware.camera" />
+            <uses-feature android:name="android.hardware.camera.autofocus" />
+            <uses-permission android:name="android.permission.VIBRATE" />
+            <!--<uses-feature android:name="android.hardware.camera" android:required="true" />-->
+        </config-file>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Multishot">
+                <param name="android-package" value="org.apache.cordova.multishot.CameraPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="org.apache.cordova.multishot.CameraActivity"
+                      android:screenOrientation="portrait"
+                      android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                      android:configChanges="orientation|keyboardHidden|screenSize">
+                <intent-filter>
+                    <action android:name="android.intent.action.VIEW" />
+                    <category android:name="android.intent.category.DEFAULT" />
+
+                </intent-filter>
+            </activity>
+        </config-file>
+
+        <!-- copy build extras, necessary for plugin -->
+        <source-file src="src/android/CameraActivity.java" target-dir="src/com/niido/multishot" />
+        <source-file src="src/android/CameraFragment.java" target-dir="src/com/niido/multishot" />
+        <source-file src="src/android/CameraPlugin.java" target-dir="src/com/niido/multishot" />
+        <source-file src="src/android/ImageParameters.java" target-dir="src/com/niido/multishot" />
+        <source-file src="src/android/ImageUtility.java" target-dir="src/com/niido/multishot" />
+        <source-file src="src/android/SquareCameraPreview.java" target-dir="src/com/niido/multishot" />
+        <source-file src="src/android/Validation.java" target-dir="src/com/niido/multishot" />
+
+
+        <!-- res files -->
+        <source-file src="src/android/res/layout/activity_camera.xml" target-dir="res/layout" />
+        <source-file src="src/android/res/layout/squarecamera__fragment_camera.xml" target-dir="res/layout" />
+        <source-file src="src/android/res/drawable/capture_shape.xml" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/icon.png" target-dir="res/drawable" />
+        <source-file src="src/android/res/drawable/splash.png" target-dir="res/drawable" />
+
+    </platform>
+
+</plugin>
